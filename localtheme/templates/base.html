@@ -30,9 +30,12 @@
                 {% endfor %}
                 {% endif %}
                 {% if DISPLAY_CATEGORIES_ON_MENU -%}
-                {% for cat, null in categories %}
-                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                {% for tag, articles in tags|sort %}
+                    <li{% if article and tag == article.tag %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</li>
                 {% endfor %}
+                <!-- {% for cat, null in categories %}
+                    <li{% if cat == category %} class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
+                {% endfor %} -->
                 {% endif %}
                 </ul></nav>
         </header><!-- /#banner -->
