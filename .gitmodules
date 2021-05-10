@@ -1,0 +1,3 @@
+[submodule "local-plugins"]
+	path = local-plugins
+	url = https://github.com/GiovanH/peliplugins
