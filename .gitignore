@@ -1,14 +1,15 @@
 # Ignore other git repositories
 pelican-plugins
 pelican-themes
+local-plugins
 
 # Ignore cached files
 tweets/*
 __pycache__
 
 # Ignore generated files
-giovee/static/css/*.css
-giovee/static/css/*.css.map
+localtheme/static/css/*.css
+localtheme/static/css/*.css.map
 output
 
 # Ignore secret files
