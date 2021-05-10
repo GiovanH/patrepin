@@ -116,8 +116,9 @@ JINJA_ENVIRONMENT = {
 
 # Plugins
 
-PLUGIN_PATHS = ["pelican-plugins", "local-plugins"]
+PLUGIN_PATHS = ["pelican-plugins", "local-plugins", "."]
 PLUGINS = [
+    'patreonjson',
     'summary',
     'sex_vampires',
     'renderdeps',
