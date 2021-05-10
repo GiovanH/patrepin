@@ -1,0 +1,18 @@
+# Ignore other git repositories
+pelican-plugins
+pelican-themes
+
+# Ignore cached files
+tweets/*
+__pycache__
+
+# Ignore generated files
+giovee/static/css/*.css
+giovee/static/css/*.css.map
+output
+
+# Ignore secret files
+tweepy_config.py
+
+content/*
+temptemptemp/
