@@ -1,9 +1,12 @@
 from pelican import signals
 from pelican.readers import BaseReader
-from pathlib import Path
 from urllib import parse as urlparse
+from pathlib import Path
+import glob
 import requests
 import json
+import bs4
+import re
 import os
 
 FILE_EXTENSIONS = ['json']
@@ -31,9 +34,6 @@ def getPatreonTags(json_data):
             raise
 
     # Finally we have tags_json
-
-
-
 
 # <style class="fallback">body{visibility:hidden;white-space:pre;font-family:monospace}</style>
 # <script>window.alreadyProcessedMarkdeep||(document.body.style.visibility="visible")</script>
@@ -64,7 +64,7 @@ class MarkdeepReader(BaseReader):
 
         metadata.update({
             'author': json_data['creator']['full_name'],
-            'template': "patreon_article",
+            # 'template': "patreon_article",
             'slug': getPatreonSlug(json_data),
             'tags': getPatreonTags(json_data),
             'data': json_data,
@@ -73,14 +73,48 @@ class MarkdeepReader(BaseReader):
         if summary := json_data.get('teaser_text'):
             metadata['summary'] = summary
 
+        content_html = json_data['content']
+
+        parent_dir = os.path.split(filename)[0]
+
+        if image_gallery := json_data.get("images"):
+            metadata['image_gallery'] = []
+            for image in image_gallery:
+                file_name = image['file_name']
+                local_image = os.path.split(glob.glob(os.path.join(parent_dir, f"{json_data['id']}_*_{file_name}"))[0])[1]
+                metadata['image_gallery'].append(local_image)
+
+                content_html += "<a href='{attach}%s'></a>" % local_image
+
+        # TODO preprocess images
+        soup_doc = bs4.BeautifulSoup(content_html, 'html.parser')
+
+        # known_files = [filename]
+
+        # # zzzzzzzip em up
+        # parent_dir = os.path.split(filename)[0]
+        media_ids = [img['data-media-id'] for img in soup_doc.select('img[data-media-id]')]
+        child_images = [
+            os.path.split(path)[1] for path in 
+            glob.glob(os.path.join(parent_dir, f"{json_data['id']}_*.*"))
+            if re.match(r'.*_\d+_\d+\..{3,4}$', path) and not path.endswith("json")
+        ]
+
+        if not len(media_ids) == len(child_images):
+            print(media_ids)
+            print(child_images)
+            raise AssertionError()
+
+        for img in soup_doc.select('img[data-media-id]'):
+            media_id = img['data-media-id']
+            img['src'] = "{attach}" + child_images[media_ids.index(media_id)]
+
+        content_html = str(soup_doc)
+
         parsed_metadata = {
             key: self.process_metadata(key, value)
             for key, value in metadata.items()
         }
-
-        content_html = json_data['content']
-
-        # TODO preprocess images
 
         return content_html, parsed_metadata
 
