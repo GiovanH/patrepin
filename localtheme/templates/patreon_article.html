@@ -17,13 +17,13 @@
 {% endblock %}
 
 {% block content %}
-<section id="content" class="body">
-  <article>
+<section id="content" class="post-card">
+  <article class="full">
     <header>
-      <h1 class="entry-title">
+      <span class="meta published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</span>
+      <h1 class="post-title">
         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
            title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-      {% include 'twitter.html' %}
     </header>
 
     <div class="entry-content">

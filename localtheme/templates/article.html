@@ -17,19 +17,34 @@
 {% endblock %}
 
 {% block content %}
-<section id="content" class="body">
-  <article>
+<section id="content" class="post-card">
+  <article class="full">
+    <!-- {{ article.image_gallery }} -->
+
+    {% if article.image_gallery %}
+    {% for imgsrc in article.image_gallery %}
+    <img class="attachment image" src="{{imgsrc}}"></img>
+    {% endfor %}
+    {% endif %}
+
     <header>
-      <h1 class="entry-title">
+      <span class="meta published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</span>
+      <h1 class="post-title">
         <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
            title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
-      {% include 'twitter.html' %}
     </header>
 
     <div class="entry-content">
-      {% include 'article_infos.html' %}
       {{ article.content }}
     </div><!-- /.entry-content -->
+
+    {% if article.tags %}
+    <ul class="post-tags">
+      {% for tag in article.tags %}
+        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
 
   </article>
 </section>
