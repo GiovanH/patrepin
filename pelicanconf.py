@@ -51,8 +51,8 @@ READERS = dict(html=None)
 
 # Article url schema
 INDEX_SAVE_AS = 'index.html'
-ARTICLE_URL = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/'
-ARTICLE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/{slug}/index.html'
+ARTICLE_URL = 'posts/{slug}/'
+ARTICLE_SAVE_AS = 'posts/{slug}/index.html'
 
 DRAFT_URL = 'drafts/{slug}.html'
 DRAFT_SAVE_AS = 'drafts/{slug}.html'
@@ -62,12 +62,12 @@ TAGS_SAVE_AS = 'tag/index.html'
 TAGS_URL = 'tag/index.html'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
-ARCHIVES_URL = 'blog/'
-ARCHIVES_SAVE_AS = 'blog/index.html'
+ARCHIVES_URL = 'posts/'
+ARCHIVES_SAVE_AS = 'posts/index.html'
 
-YEAR_ARCHIVE_SAVE_AS = 'blog/{date:%Y}/index.html'
-MONTH_ARCHIVE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/index.html'
-DAY_ARCHIVE_SAVE_AS = 'blog/{date:%Y}/{date:%m}/{date:%d}/index.html'
+YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
+MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/index.html'
+DAY_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/index.html'
 
 CATEGORY_URL = 'category/{slug}/index.html'
 CATEGORY_SAVE_AS = 'category/{slug}/index.html'
