@@ -4,7 +4,7 @@
 
 AUTHOR = 'author name here'
 SITENAME = f"{AUTHOR} - Patreon Archive"
-SITEURL = ''
+SITEURL = '.'
 
 TIMEZONE = 'America/Chicago'
 
@@ -13,3 +13,8 @@ DEFAULT_DATE_FORMAT = '%a %b %d, %Y'
 
 # Use 'reversed-date' for newest first
 ARTICLE_ORDER_BY = 'date'
+
+DEFAULT_PAGINATION = False
+
+
+RELATIVE_URLS = True

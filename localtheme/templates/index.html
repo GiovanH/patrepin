@@ -14,7 +14,7 @@ Index
       <article class="short">
 
         {% if article.image_gallery %}
-        <img class="attachment image" src="{{ SITEURL }}/{{ article.url }}/{{article.image_gallery[0]}}"></img>
+        <img class="attachment image" src="{{ SITEURL }}/{{ article.url }}{{article.image_gallery[0]}}"></img>
         {% endif %}
 
         <header>
@@ -53,7 +53,7 @@ Index
             <span class="prev"></span>
         {% endif %}
 
-        <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Blog archive</a>
+        <!-- <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Blog archive</a> -->
 
         {% if articles_page.has_previous() %}
             <a class="next" href="{{ SITEURL }}/{{ articles_previous_page.url }}">Newer &rarr;</a>

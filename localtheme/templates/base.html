@@ -30,7 +30,7 @@
                 {% if loop.index <= 5 %}
                 <a href="{{ SITEURL }}/{{ itag.url }}" 
                     class="featured button{% if tag and itag == tag %} active{% endif %}"
-                    style="background-image: url(/theme/images/category/{{itag |e}}.png);"
+                    style="background-image: url({{ SITEURL }}/theme/images/category/{{itag |replace(' ', '%20')}}.png);"
                 >
                     <span class="name">{{ itag }}</span>
                     <span class="count">{{ articles|count }} posts</span>

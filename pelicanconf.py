@@ -65,18 +65,19 @@ TAG_SAVE_AS = 'tag/{slug}/index.html'
 ARCHIVES_URL = 'posts/'
 ARCHIVES_SAVE_AS = 'posts/index.html'
 
-YEAR_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/index.html'
-MONTH_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/index.html'
-DAY_ARCHIVE_SAVE_AS = 'posts/{date:%Y}/{date:%m}/{date:%d}/index.html'
+YEAR_ARCHIVE_SAVE_AS = ''  # 'posts/{date:%Y}/index.html'
+MONTH_ARCHIVE_SAVE_AS = ''  # 'posts/{date:%Y}/{date:%m}/index.html'
+DAY_ARCHIVE_SAVE_AS = ''  # 'posts/{date:%Y}/{date:%m}/{date:%d}/index.html'
 
-CATEGORY_URL = 'category/{slug}/index.html'
-CATEGORY_SAVE_AS = 'category/{slug}/index.html'
+CATEGORY_URL = ''  # 'category/{slug}/index.html'
+CATEGORY_SAVE_AS = ''  # 'category/{slug}/index.html'
 
 TAG_URL = 'tag/{slug}/index.html'
 TAG_SAVE_AS = 'tag/{slug}/index.html'
 
-CATEGORIES_SAVE_AS = "category/index.html"
-AUTHORS_SAVE_AS = "author/index.html"
+CATEGORIES_SAVE_AS = ''  # "category/index.html"
+AUTHORS_SAVE_AS = ''  # "author/index.html"
+AUTHOR_SAVE_AS = ''
 
 # Page url schema
 PAGE_URL = '{slug}/'
@@ -91,7 +92,6 @@ FILENAME_METADATA = r'(?P<date>\d{4}-\d{2}-\d{2})-(?P<slug>.*)'
 # Theme and theme settings
 THEME = "localtheme"
 
-DEFAULT_PAGINATION = 10
 DEFAULT_ORPHANS = 4
 PAGINATION_PATTERNS = (
     (1, '{base_name}/', '{base_name}/index.html'),
