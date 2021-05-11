@@ -9,6 +9,10 @@ import bs4
 import re
 import os
 
+import logging
+
+logger = logging.getLogger(__name__)
+
 FILE_EXTENSIONS = ['json']
 
 def getPatreonCampaign(json_data):
@@ -70,10 +74,16 @@ class MarkdeepReader(BaseReader):
             'data': json_data,
         })
 
+        # TODO post_file
+
         if summary := json_data.get('teaser_text'):
             metadata['summary'] = summary
 
-        content_html = json_data['content']
+        try:
+            content_html = json_data['content']
+        except KeyError:
+            logger.error(f"{filename!r}: content missing!")
+            content_html = "<pre>Content missing</pre>"
 
         parent_dir = os.path.split(filename)[0]
 
@@ -81,8 +91,13 @@ class MarkdeepReader(BaseReader):
             metadata['image_gallery'] = []
             for image in image_gallery:
                 file_name = image['file_name']
-                local_image = os.path.split(glob.glob(os.path.join(parent_dir, f"{json_data['id']}_*_{file_name}"))[0])[1]
-                metadata['image_gallery'].append(local_image)
+                globstr = os.path.join(parent_dir, f"{json_data['id']}_*_{file_name}")
+                try:
+                    local_image = os.path.split(glob.glob(globstr)[0])[1]
+                    metadata['image_gallery'].append(local_image)
+                except IndexError:
+                    logger.error(f"Could not find image file by glob {globstr!r}!")
+                    raise
 
                 content_html += "<a href='{attach}%s'></a>" % local_image
 
@@ -98,16 +113,21 @@ class MarkdeepReader(BaseReader):
             os.path.split(path)[1] for path in 
             glob.glob(os.path.join(parent_dir, f"{json_data['id']}_*.*"))
             if re.match(r'.*_\d+_\d+\..{3,4}$', path) and not path.endswith("json")
+            and not os.path.split(path)[1] in metadata.get('image_gallery', [])
         ]
 
         if not len(media_ids) == len(child_images):
-            print(media_ids)
-            print(child_images)
-            raise AssertionError()
+            logger.debug(media_ids)
+            logger.debug(child_images)
+            raise AssertionError("Media ID length mismatch (view debug!)")
 
         for img in soup_doc.select('img[data-media-id]'):
             media_id = img['data-media-id']
-            img['src'] = "{attach}" + child_images[media_ids.index(media_id)]
+            try:
+                img['src'] = "{attach}" + child_images[media_ids.index(media_id)]
+            except IndexError:
+                logger.error(f"Could not find media_id {media_id!r} in media ids!")
+                raise
 
         content_html = str(soup_doc)
 
