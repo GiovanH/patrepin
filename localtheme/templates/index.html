@@ -1,5 +1,11 @@
 {% extends "base.html" %}
-{% block content_title %}{% endblock %}
+{% block content_title %}
+{% if tag %}
+{{ tag }}
+{% else %}
+Index
+{% endif %}
+{% endblock %}
 {% block content %}
 {% if articles %}
 
@@ -8,7 +14,7 @@
       <article class="short">
 
         {% if article.image_gallery %}
-        <img class="attachment image" src="{{article.image_gallery[0]}}"></img>
+        <img class="attachment image" src="{{ SITEURL }}/{{ article.url }}/{{article.image_gallery[0]}}"></img>
         {% endif %}
 
         <header>

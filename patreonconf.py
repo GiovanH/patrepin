@@ -10,3 +10,6 @@ TIMEZONE = 'America/Chicago'
 
 DEFAULT_LANG = 'English'
 DEFAULT_DATE_FORMAT = '%a %b %d, %Y'
+
+# Use 'reversed-date' for newest first
+ARTICLE_ORDER_BY = 'date'

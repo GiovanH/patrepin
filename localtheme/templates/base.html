@@ -22,8 +22,7 @@
 
 <body id="index" class="home">
     <header id="banner" class="body">
-        <h1><a href="{{ SITEURL }}/">{{ SITENAME }}{% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
-        
+        <h1>{% block content_title %}{% endblock %} - <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
     </header><!-- /#banner -->
     <nav>
         <ol class="buttons">
@@ -55,7 +54,7 @@
     </nav>
     {% block content %}
     {% endblock %}
-    
+
     <section id="extras" class="body">
     
     </section><!-- /#extras -->

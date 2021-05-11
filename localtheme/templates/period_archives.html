@@ -1,13 +1,27 @@
 {% extends "base.html" %}
+{% block content_title %}Archives{% endblock %}
 {% block content %}
 <section id="content" class="body">
-<h1>Archives for {{ period | reverse | join(' ') }}</h1>
-
-<dl>
+<section id="content" class="list post-card">
 {% for article in dates %}
-    <dt>{{ article.locale_date }}</dt>
-    <dd><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></dd>
+  <article class="short">
+    <header>
+      <span class="meta published" title="{{ article.date.isoformat() }}">{{ article.locale_date }}</span>
+      <h1 class="post-title">
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"
+           title="Permalink to {{ article.title|striptags }}">{{ article.title }}</a></h1>
+    </header>
+
+    {% if article.tags %}
+    <ul class="post-tags">
+      {% for tag in article.tags %}
+        <li><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a></li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+
+  </article>
 {% endfor %}
-</dl>
+</section>
 </section>
 {% endblock %}

@@ -25,6 +25,9 @@ header#banner {
 	    a { 
 		    color: inherit;
 		    text-decoration: inherit;
+		    &:hover {
+			    text-decoration: underline;
+			}
 	    }
 	}
 }
@@ -43,6 +46,7 @@ nav {
 		// Row of buttons
 	    display: flex;
     	flex-direction: row;
+    	margin: 0 2px;
 
 		a.button, li.button {
 			// Rounded button
