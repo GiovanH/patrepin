@@ -13,6 +13,8 @@ import logging
 # Path for content
 PATH = 'content'
 
+PATREPIN_VERSION = '0.1.1'
+
 # Basic settings
 USE_FOLDER_AS_CATEGORY = True
 DEFAULT_CATEGORY = "Unsorted"

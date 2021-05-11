@@ -48,6 +48,13 @@ nav {
     	flex-direction: row;
     	margin: 0 2px;
 
+        a {
+            text-decoration: none;
+            &.active {
+                text-decoration: underline;
+            }
+        }
+
 		a.button, li.button {
 			// Rounded button
 		    height: 96px;
@@ -56,10 +63,6 @@ nav {
     
     		line-height: 1.5em;
     		
-    		text-decoration: none;
-    		&.active {
-	    		text-decoration: underline;
-    		}
     		color: inherit;
 
 		    border-width: 1px;
@@ -105,6 +108,7 @@ section.post-card {
 	border-style: solid;
 	border-color: rgb(229, 227, 221);
 	border-radius: 4px;
+
 	box-shadow: none;
 	background-color: rgb(255, 255, 255);
 	overflow: visible;
@@ -114,7 +118,7 @@ section.post-card {
     margin: auto;
 
     // Card spacing
-    margin-bottom: 1.5em;
+    margin-bottom: 1em;
 
     // Default text style
     color: rgb(36, 30, 18);
@@ -128,6 +132,12 @@ section.post-card {
 	* {
 		max-width: 100%;
 	}
+
+    // Attachments on top
+    img.attachment {
+        display: block;
+        margin: auto;
+    }
 
 
     header {
@@ -199,4 +209,12 @@ section.post-card {
 		    }
 		}
 	}
+}
+
+footer {
+    text-align: right;
+    margin: 1em;
+    font-family: aktiv-grotesk, sans-serif;
+    font-size: 14px;
+    font-style: italic;
 }
