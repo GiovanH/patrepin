@@ -20,9 +20,12 @@
 
         <div class="entry-content">
           {{ article.summary }}
+
+            {% if article.summary != article.content %}
+            <p><a href="{{ SITEURL }}/{{ article.url }}">Continue Reading</a></p>
+            {% endif %}
         </div><!-- /.entry-content -->
 
-        <a href="{{ SITEURL }}/{{ article.url }}">Continue Reading</a>
 
         {% if article.tags %}
         <ul class="post-tags">

@@ -14,6 +14,85 @@
 @import url("typogrify.css");
 @import url("fonts.css");
 
+header#banner {
+    padding: 1em;
+    border-bottom: 1px grey solid;
+    margin-bottom: 1em;
+
+	h1 {
+		font-family: Walsheim, sans-serif;
+		font-size: 21px;
+	    a { 
+		    color: inherit;
+		    text-decoration: inherit;
+	    }
+	}
+}
+
+nav {
+    max-width: 750px;
+    margin: auto;
+    margin-bottom: 1em;
+
+    color: white;
+    font-family: aktiv-grotesk, sans-serif;
+	font-size: 16px;
+	-webkit-font-smoothing: antialiased;
+
+	ol.buttons {
+		// Row of buttons
+	    display: flex;
+    	flex-direction: row;
+
+		a.button, li.button {
+			// Rounded button
+		    height: 96px;
+    		flex-grow: 1;
+    		flex-basis: 100%;
+    
+    		line-height: 1.5em;
+    		
+    		text-decoration: none;
+    		&.active {
+	    		text-decoration: underline;
+    		}
+    		color: inherit;
+
+		    border-width: 1px;
+		    border-style: solid;
+		    border-color: rgb(229, 227, 221);
+		    border-radius: 4px;
+
+		    background: gray;
+    		background-blend-mode: color-burn;
+	        background-position: center center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-flow: column;
+	    	span {
+			    display: block;
+			    &.name {
+    				font-weight: bold;
+			    }
+			}
+		}
+
+		li.button ol a {
+		    display: flex;
+		    justify-content: center;
+		    align-items: center;
+		    flex-flow: column;
+			span {
+				display: inline;
+			}
+		}
+	}
+
+}
 
 section.post-card {
 
