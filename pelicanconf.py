@@ -13,7 +13,7 @@ import logging
 # Path for content
 PATH = 'content'
 
-PATREPIN_VERSION = '0.1.1'
+PATREPIN_VERSION = '0.1.2'
 
 # Basic settings
 USE_FOLDER_AS_CATEGORY = True
