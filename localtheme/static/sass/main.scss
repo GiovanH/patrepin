@@ -1,13 +1,3 @@
-/*
-	Name: Smashing HTML5
-	Date: July 2009
-	Description: Sample layout for HTML5 and CSS3 goodness.
-	Version: 1.0
-	License: MIT <https://opensource.org/licenses/MIT>
-	Licensed by: Smashing Media GmbH <https://www.smashingmagazine.com/>
-	Original author: Enrique Ramírez <http://enrique-ramirez.com/>
-*/
-
 /* Imports */
 @import url("reset.css");
 // @import url("pygment.css");
@@ -18,6 +8,8 @@ header#banner {
     padding: 1em;
     border-bottom: 1px grey solid;
     margin-bottom: 1em;
+    display: flex;
+    flex-direction: column-reverse;
 
 	h1 {
 		font-family: Walsheim, sans-serif;
@@ -30,6 +22,15 @@ header#banner {
 			}
 	    }
 	}
+
+    ul.sidebar {
+        display: inline-block;
+        right: 0;
+        position: absolute;
+
+        font-family: aktiv-grotesk, sans-serif;
+        font-size: 16px;
+    }
 }
 
 nav {
@@ -40,7 +41,6 @@ nav {
     color: white;
     font-family: aktiv-grotesk, sans-serif;
 	font-size: 16px;
-	-webkit-font-smoothing: antialiased;
 
 	ol.buttons {
 		// Row of buttons
@@ -209,6 +209,10 @@ section.post-card {
 		    }
 		}
 	}
+
+    &.search {
+        border: none;
+    }
 }
 
 footer {

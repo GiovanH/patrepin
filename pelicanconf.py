@@ -13,7 +13,7 @@ import logging
 # Path for content
 PATH = 'content'
 
-PATREPIN_VERSION = '0.1.2'
+PATREPIN_VERSION = '0.1.3'
 
 # Basic settings
 USE_FOLDER_AS_CATEGORY = True
@@ -44,8 +44,7 @@ TEMPLATE_PAGES = {
 
 # Search is from the Tipue plugin
 DIRECT_TEMPLATES = [
-    'index', 'categories', 'tags', 'archives', 
-    # 'search'
+    'index', 'categories', 'tags', 'archives', 'search'
 ]
 
 # Don't process HTML files

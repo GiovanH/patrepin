@@ -76,9 +76,6 @@ class MarkdeepReader(BaseReader):
 
         # TODO post_file
 
-        if summary := json_data.get('teaser_text'):
-            metadata['summary'] = summary
-
         try:
             content_html = json_data['content']
         except KeyError:
@@ -103,6 +100,18 @@ class MarkdeepReader(BaseReader):
 
         # TODO preprocess images
         soup_doc = bs4.BeautifulSoup(content_html, 'html.parser')
+
+        # Teaser text summary handling
+
+        if summary := json_data.get('teaser_text'):
+            metadata['summary'] = summary
+        elif len(soup_doc.findAll("p")) > 2:
+            logger.warning(f"{filename!r}: missing summary!")
+            for p in soup_doc.findAll("p"):
+                if p.text.strip():
+                    metadata["summary"] = p.text
+                    break
+
 
         # known_files = [filename]
 

@@ -3,9 +3,16 @@
 <head>
     {% block head %}
     <meta charset="utf-8" />
+    <meta property="og:locale" content="en-US" />
     <meta name="generator" content="Pelican" />
     <title>{% block title %}{{ SITENAME }}{%endblock%}</title>
     <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/{{ CSS_FILE }}" />
+
+    <meta name="description" content="{{ SITE_DESCRIPTION }}">
+    <meta property="og:description" content="{{ SITE_DESCRIPTION }}">
+
+    {{ SITE_EXTRAMETA }}
+
 
     {% if FEED_ALL_ATOM %}
     <link href="{{ FEED_DOMAIN }}/{% if FEED_ALL_ATOM_URL %}{{ FEED_ALL_ATOM_URL }}{% else %}{{ FEED_ALL_ATOM }}{% endif %}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Atom Feed" />
@@ -22,7 +29,11 @@
 
 <body id="index" class="home">
     <header id="banner" class="body">
-        <h1>{% block content_title %}{% endblock %} - <a href="{{ SITEURL }}/">{{ SITENAME }}</a>
+        <h1>{% block content_title %}{% endblock %} - <a href="{{ SITEURL }}/">{{ SITENAME }}</a></h1>
+        <ul class="sidebar">
+            <a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Index</a>
+            <a href="{{ SITEURL }}/search.html">Search</a>
+        </ul>
     </header><!-- /#banner -->
     <nav>
         <ol class="buttons">
